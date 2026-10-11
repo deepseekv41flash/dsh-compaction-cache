@@ -1,0 +1,23 @@
+# dsh-compaction-cache bundle layer — applied automatically when a profile lists
+# this package in dsh.profile.bundles (declared by dsh.bundle.patch in
+# package.json), or inserted by hand into a profile's own cordis.patch.yml.
+#
+# This is a WORKAROUND for an upstream defect (deepseek-harness discussion
+# #1944): dsh-compaction-basic's summarizer builds its request from only
+# provider/model, so `reasoningEffort` is dropped and `maxTokens` is forced to
+# its own config value — a different provider cache key, so the whole replayed
+# context is re-billed at the full input rate. Delete this plugin once the
+# upstream fix ships in the version you run.
+#
+# Every config key is optional; the defaults are shown.
+- insert:
+    - id: compaction-cache
+      name: dsh-compaction-cache
+      # config:
+      #   enabled: true                    # total switch
+      #   log: true                        # one info line per aligned fold
+      #   mirror:                          # parameters copied from the routed header
+      #     - reasoningEffort              #   skipped when adapterDefaults marks it
+      #     - temperature                  #   adapter-materialized for normal turns
+      #   alignMaxTokens: true             # force the routed max_tokens (the one the
+      #                                    #   summarizer always overrides)

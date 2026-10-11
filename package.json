@@ -1,0 +1,54 @@
+{
+  "name": "dsh-compaction-cache",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness plugin: makes the compaction summarization call carry the same reasoningEffort / maxTokens as the routed turn, so the provider prefix cache keeps hitting. Workaround for deepseek-harness discussion #1944.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "compaction",
+    "prefix-cache",
+    "kv-cache",
+    "reasoning-effort",
+    "token-cost",
+    "summarization"
+  ],
+  "license": "MIT",
+  "author": "deepseekv41flash<monkey321478965@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseekv41flash/dsh-compaction-cache.git"
+  },
+  "homepage": "https://github.com/deepseekv41flash/dsh-compaction-cache#readme",
+  "bugs": {
+    "url": "https://github.com/deepseekv41flash/dsh-compaction-cache/issues"
+  },
+  "private": true,
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "test",
+    "cordis.patch.yml",
+    "README.md",
+    "README-en.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "check": "node --input-type=module -e \"await import('./lib/index.js')\""
+  }
+}
