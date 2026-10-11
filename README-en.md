@@ -101,6 +101,13 @@ deliberate.) Take the source from GitHub:
 "dsh": { "profile": { "bundles": ["…", "dsh-compaction-cache"] } }
 ```
 
+> Verified on this machine with pnpm 11.22.0: `pnpm add github:deepseekv41flash/dsh-compaction-cache`
+> resolves to `0.1.0` and imports cleanly; `private: true` does not block the install. Profile
+> dependencies are installed with pnpm, so this spec works.
+> (`npm install github:…` resolves the shorthand to `ssh://git@github.com/…` and fails with
+> `Permission denied (publickey)` where no SSH key is configured — that is npm's shorthand
+> behaviour, not the package.)
+
 Or clone locally and use a `link:` dependency (the path verified on this machine):
 
 ```sh

@@ -111,6 +111,11 @@ maxTokens       = header.config.maxTokens         // 无条件覆盖（摘要器
 "dsh": { "profile": { "bundles": ["…", "dsh-compaction-cache"] } }
 ```
 
+> 本机实测（pnpm 11.22.0）：`pnpm add github:deepseekv41flash/dsh-compaction-cache` 解析到 `0.1.0`、
+> 导入正常，`private: true` 不影响安装。profile 的依赖本来就是 pnpm 装的，所以这条规格可用。
+> （`npm install github:…` 在本机会被解析成 `ssh://git@github.com/…`，没配 SSH key 就是
+> `Permission denied (publickey)`——那是 npm 的 shorthand 行为，与包无关。）
+
 方式二 · 本地 clone + `link:`（本机实测走的就是这条）：
 
 ```sh
